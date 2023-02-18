@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Results</title>
+        <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 60%;
+            }
+            
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+            
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+        </style>
+    </head>
+    <body>
+        <form method="get">
+            <input type="text" name="q" size=40 value="{{ q }}" hidden>
+
+            {% if data %}
+                <table>
+                    {% for title, link in data.items %}
+                        <tr>
+                            <td>
+                                <a href="{{ link }}">{{ title }}</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table> <br><br>
+            {% endif %}
+
+            {% if prev_pg >= 1 %}
+                <button type="submit" formaction="{% url 'results' prev_pg %}">Previous Page</button>
+                &emsp;&emsp;&emsp;&emsp;
+            {% endif %}
+
+            Page {{ curr }} of 25
+            &emsp;&emsp;&emsp;&emsp;
+
+            {% if next_pg < 26 %}
+                <button type="submit" formaction="{% url 'results' next_pg %}">Next Page</button>
+            {% endif %}
+        </form>
+    </body>
+</html>

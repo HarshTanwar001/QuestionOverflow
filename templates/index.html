@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Home</title>
+    </head>
+    <body>
+        <form action="{% url 'results' 1 %}" method="get">
+            <label>Please enter your question:</label>
+            <input type="text" name="q" size=40 required> <br><br>
+            <button type="submit">Search</button>
+        </form>
+    </body>
+</html>
